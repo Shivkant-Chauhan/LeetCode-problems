@@ -1,25 +1,39 @@
 class Solution {
 public:
     bool backspaceCompare(string s, string t) {
-        // int p1 = 0, p2 = 0;
-        // int n1 = s.size(), n2 = t.size();
-//         while(p1 < n1-1 && p2 < n2-1){
-//             while(p1<n1-1 && (p1+1)=='#'){
-//                 p1 += 2;
-//             }
-//             while(p2<n2-1 && (p2+1)=='#'){
-//                 p2 += 2;
-//             }
-            
-//             if(s[p1] != s[p2]){
-//                 return false;
-//             }
-//             p1++;
-//             p2++;
-//         }
-//         return true;
-    
-        stack<char> helper;
+    //trying for O(1) space complexity
+        int p1 = 0, p2 = 0;
+        for(int i = 0; i < s.size(); i++){
+            if(s[i] != '#'){
+                s[p1] = s[i];
+                p1++;
+            } else{
+                p1--;
+                if(p1 < 0)   p1 = 0;
+            }
+        }
+        for(int i = 0; i < t.size(); i++){
+            if(t[i] != '#'){
+                t[p2] = t[i];
+                p2++;
+            } else{
+                p2--;
+                if(p2 < 0)   p2 = 0;
+            }
+        }
+        
+        if(p1 == p2){
+            for(int i = 0; i < p1; i++)
+                if(s[i] != t[i])
+                    return false;
+        } else
+            return false;
+        
+        return true;
+        
+    // accepted solution 
+    //this was taking O(n) space complexity
+        /*stack<char> helper;
         for(int i = 0; i < s.size(); i++){
             if(s[i] == '#'){
                 if(helper.size() > 0)   helper.pop();
@@ -47,6 +61,6 @@ public:
         }
         
         if(temp1 == temp2)  return true;
-        else                return false;
+        else                return false;*/
     }
 };
