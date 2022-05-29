@@ -3,13 +3,24 @@ public:
     int maxProduct(vector<string>& words) {
         vector<int> mask;
         for(int i = 0; i < words.size(); i++){
-            int maskI = (1<<(words[i][0]-'a'));
-            for(int k = 1; k < words[i].size(); k++){
-                maskI |= (1<<(words[i][k]-'a'));
-                // cout << (1<<(words[i][k]-'a')) << " ";
+            bitset<32> bits;
+            for(int k = 0; k < words[i].size(); k++){
+                bits[words[i][k]-'a'] = 1;
             }
-            mask.push_back(maskI);
+            int num = bits.to_ulong();
+            mask.push_back(num);
         }
+        
+        // bit manipulation
+//         vector<int> mask;
+//         for(int i = 0; i < words.size(); i++){
+//             int maskI = (1<<(words[i][0]-'a'));
+//             for(int k = 1; k < words[i].size(); k++){
+//                 maskI |= (1<<(words[i][k]-'a'));
+//                 // cout << (1<<(words[i][k]-'a')) << " ";
+//             }
+//             mask.push_back(maskI);
+//         }
         
         int output = 0;
         for(int i = 0; i < mask.size(); i++){
