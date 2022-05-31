@@ -17,7 +17,7 @@ public:
 //         string all(k, '0');
 //         helper(all, 0, k);
         
-        set<string> checker;
+        unordered_set<string> checker;
         string temp = "";
         for(int i = 0; i < k; i++){
             temp += s[i];
