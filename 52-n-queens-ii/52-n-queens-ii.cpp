@@ -1,6 +1,6 @@
 class Solution {
 public:
-    bool checkPos(vector<string>& board, int i, int j, int n){
+    bool checkPos(vector<string>& board, int& i, int& j, int& n){
         for(int k = 0; k < j; k++){
             if(board[i][k] == 'q')  return false;
         }
@@ -28,7 +28,7 @@ public:
         return true;
     }
     
-    int helper(vector<string>& board, int n, int row){
+    int helper(vector<string>& board, int& n, int row){
         if(n == row)    return 1;
         
         int pass = 0;
