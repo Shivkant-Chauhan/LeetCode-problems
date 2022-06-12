@@ -6,7 +6,7 @@ public:
         int p1 = 0, p2 = 0;
         int ans = -1;
         int score = 0;
-        map<int, int> hsh;
+        unordered_map<int, int> hsh;
         while(p1 < nums.size()){
             while(p1<nums.size() && hsh[nums[p1]]==0){
                 score += nums[p1];
