@@ -27,10 +27,10 @@ public:
         
         int ans = helper(word1, word2, dp);
         
-        // for(int i = 0; i <= word1.size(); i++){
-        //     delete dp[i];
-        // }
-        // delete[] dp;
+        for(int i = 0; i <= word1.size(); i++){
+            delete[] dp[i];
+        }
+        delete[] dp;
         
         return ans;
     }
