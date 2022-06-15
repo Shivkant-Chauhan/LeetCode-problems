@@ -8,7 +8,7 @@ public:
         sort(words.begin(), words.end(), [](const string& l, const string& r)
                                                 {return l.size() < r.size();});
         
-        map<string, int> dp;
+        unordered_map<string, int> dp;
         
         int ans = 1;
         for(int i = 0; i < words.size(); i++){
