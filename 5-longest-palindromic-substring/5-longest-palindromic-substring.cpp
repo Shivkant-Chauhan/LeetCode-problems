@@ -5,6 +5,8 @@ public:
       
       int start = -1, len = -1;
       for(int i = 0; i < s.size(); i++){
+          if(s.size()-i < len/2)    break;  //eliminating extra operations
+          
           // odd palindrome
           int k1 = i, k2 = i;
           while(k1>0 && k2<s.size()-1 && s[k1-1]==s[k2+1]){
