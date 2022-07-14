@@ -1,28 +1,27 @@
 class Solution {
 public:
-    bool helper(vector<int>& nums, int n, int sum1, int sum2, int** dp){
-        if(n == nums.size()){
-            if(sum1 == sum2)    return true;
-            else                return false;
+    int dp[200][20000];
+    bool helper(vector<int>& nums, int sum, int id, int currSum){
+        if(id == nums.size()){
+            if(sum == currSum)  return true;
+            return false;
         }
         
-        if(dp[n][sum1] != -1)   return dp[n][sum1];
+        if(dp[id][currSum] != -1){
+            return dp[id][currSum];
+        }
         
-        bool p1 = helper(nums, n+1, sum1+nums[n], sum2, dp);
-        bool p2 = helper(nums, n+1, sum1, sum2+nums[n], dp);
+        bool p1 = helper(nums, sum, id+1, currSum);
+        bool p2 = helper(nums, sum, id+1, currSum + nums[id]);
         
-        return dp[n][sum1] = (p1 || p2);
+        return dp[id][currSum] = p1|p2;
     }
-
+    
     bool canPartition(vector<int>& nums) {
-        int** dp = new int*[nums.size()];
+        memset(dp, -1, sizeof(dp));
         int sum = accumulate(nums.begin(), nums.end(), 0);
-        for(int i = 0; i < nums.size(); i++){
-            dp[i] = new int[sum];
-            for(int j = 0; j < sum; j++)
-                dp[i][j] = -1;
-        }
-            
-        return helper(nums, 0, 0, 0, dp);
+        if(sum&1)   return false;
+        
+        return helper(nums, sum/2, 0, 0);
     }
 };
