@@ -1,22 +1,22 @@
 class Solution {
 public:
-    int dp[20000];
-    bool helper(vector<int>& nums, int sum, int id, int currSum){
-        if(id == nums.size()){
-            if(sum == currSum)  return true;
-            return false;
-        }
+    // int dp[20000];
+//     bool helper(vector<int>& nums, int sum, int id, int currSum){
+//         if(id == nums.size()){
+//             if(sum == currSum)  return true;
+//             return false;
+//         }
         
-        if(dp[currSum] != -1){
-            return dp[currSum];
-        }
+//         if(dp[currSum] != -1){
+//             return dp[currSum];
+//         }
         
-        bool p2 = helper(nums, sum, id+1, currSum + nums[id]);
-        bool p1 = helper(nums, sum, id+1, currSum);
+//         bool p2 = helper(nums, sum, id+1, currSum + nums[id]);
+//         bool p1 = helper(nums, sum, id+1, currSum);
         
         
-        return dp[currSum] = p1|p2;
-    }
+//         return dp[currSum] = p1|p2;
+//     }
     
 //     bool canPartition(vector<int>& nums) {
 //         memset(dp, -1, sizeof(dp));
