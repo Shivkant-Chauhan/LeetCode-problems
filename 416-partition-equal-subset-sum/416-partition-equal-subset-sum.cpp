@@ -25,25 +25,27 @@ public:
         
         return helper(nums, sum/2, 0, 0);
     }
+
+//bottom up..!!!
+//     bool canPartition(vector<int>& nums) {
+//         int n = nums.size();
+//         int sum = accumulate(nums.begin(), nums.end(), 0);
+//         if(sum&1 || n == 1)   return false;
+//         sum /= 2;
+        
+//         sort(nums.begin(), nums.end());
+//         vector<bool> dp(sum+1, false);
+//         dp[0] = 1;
+        
+//         for(int i = 0; i < n; i++){
+//             for(int j = sum; j >= 0; j--){
+//                 if(j >= nums[i]){
+//                     dp[j] = dp[j-nums[i]];
+//                 }
+//             }
+//         }
+
+//         return dp[sum];
+//     }
+    
 };
-    // int dp[20000];
-    // bool sol(vector<int>& nums, int t, int i=0, int s=0) {
-    //     int n=nums.size();
-    //     if(i>=n) {
-    //         if(s==t) return true;
-    //         else return false;
-    //     } 
-    //     if(dp[s]!=-1) return dp[s];
-    //     bool res = false;
-    //     res |= sol(nums, t, i+1, s+nums[i]);
-    //     res |= sol(nums, t, i+1, s);
-    //     return dp[s]=res;
-    // }
-    // bool canPartition(vector<int>& nums) {
-    //     int sum = accumulate(nums.begin(), nums.end(), 0);
-    //     if(sum&1) return false;
-    //     int t = sum/2;
-    //     memset(dp, -1, sizeof dp);
-    //     return sol(nums, t);
-    // }
-// };
