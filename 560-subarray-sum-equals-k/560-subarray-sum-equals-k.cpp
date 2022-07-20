@@ -9,14 +9,7 @@ public:
         for(int i = 0; i < nums.size(); i++){
             sum += nums[i];
             int diff = sum - k;
-            auto it = checker.find(diff);
-            if(it != checker.end()){
-                ans += checker[diff];
-                // if(sum==nums[i] && sum==diff){
-                //     ans += checker[sum];
-                // }
-                // cout << i << " ";
-            }
+            ans += checker[diff];
             checker[sum]++;
         }
         
