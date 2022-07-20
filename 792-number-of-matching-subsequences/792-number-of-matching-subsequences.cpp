@@ -1,6 +1,6 @@
 class Solution {
 public:
-    bool isGood(string s, string w){
+    bool isGood(string& s, string& w){
         int j = 0;
         int n = w.size();
         for(int i = 0; i < s.size(); i++){
