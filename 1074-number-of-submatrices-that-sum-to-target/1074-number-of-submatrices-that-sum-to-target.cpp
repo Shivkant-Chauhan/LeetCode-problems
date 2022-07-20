@@ -1,6 +1,6 @@
 class Solution {
 public:
-    int subarraySum(vector<int>& pf, int& target){
+    int subarraySum(vector<int>& pf, int target){
         int ans = 0;
         int sum = 0;
         unordered_map<int, int> hsh;
@@ -14,7 +14,7 @@ public:
         
         return ans;
     }
-    int numSubmatrixSumTarget(vector<vector<int>>& matrix, int& target) {
+    int numSubmatrixSumTarget(vector<vector<int>>& matrix, int target) {
         int ans = 0;
         for(int i = 0; i < matrix.size(); i++){
             vector<int> pf(matrix[0].size(), 0);
