@@ -11,8 +11,8 @@ public:
         return (j==n);
     }
     
-    int numMatchingSubseq(string s, vector<string>& words) {
-        map<string, bool> checked;
+    int numMatchingSubseq(string& s, vector<string>& words) {
+        unordered_map<string, bool> checked;
         int ans = 0;
         for(int i = 0; i < words.size(); i++){
             string curr = words[i];
