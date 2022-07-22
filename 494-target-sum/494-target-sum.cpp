@@ -40,7 +40,7 @@ public:
         
 */
         
-        
+// above is better approach.. this is of 2D dp array but above i implemented using 1D dp array
         int sumT = accumulate(nums.begin(), nums.end(), 0);
         if(target > sumT)   return 0;
         
