@@ -8,15 +8,15 @@ class Solution {
 public:
     vector<int> countSmaller(vector<int>& nums) {
         int n = nums.size();
-        vector<int> ans(n, 0);
+        // vector<int> ans(n, 0);
         pbds ordered_set;
         
         for(int i = n-1; i >= 0; i--){
             int x = ordered_set.order_of_key({nums[i], -1});
-            ans[i] = x;
             ordered_set.insert({nums[i], i});
+            nums[i] = x;
         }
         
-        return ans;
+        return nums;
     }
 };
