@@ -6,7 +6,7 @@ public:
             if(nums[i] == target){
                 p2 = i;
                 if(p1 == -1)    p1 = i;
-            }
+            } else if(nums[i] > target) break;
         }
         vector<int> ans(2);
         ans[0] = p1;
