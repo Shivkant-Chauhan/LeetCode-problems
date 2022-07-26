@@ -20,6 +20,7 @@ public:
         } else if(root->val < p->val && root->val < q->val){
             return LCA(root->right, p, q);
         } else{
+            return root;
             a = LCA(root->left, p, q);
             b = LCA(root->right, p, q);
         }
