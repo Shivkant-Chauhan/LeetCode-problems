@@ -16,9 +16,9 @@ public:
         
         TreeNode *a = NULL, *b = NULL;
         if(root->val > p->val && root->val > q->val){
-            a = LCA(root->left, p, q);
+            return LCA(root->left, p, q);
         } else if(root->val < p->val && root->val < q->val){
-            a = LCA(root->right, p, q);
+            return LCA(root->right, p, q);
         } else{
             a = LCA(root->left, p, q);
             b = LCA(root->right, p, q);
