@@ -21,28 +21,28 @@
 //     }
 // };
 
-class Solution {
-public:
-    int lengthOfLIS(vector<int>& nums) {
-        int ans = 0;
-        int n =nums.size();
-        vector<int> dp(n, 1);
+// class Solution {
+// public:
+//     int lengthOfLIS(vector<int>& nums) {
+//         int ans = 0;
+//         int n =nums.size();
+//         vector<int> dp(n, 1);
         
-        for(int i = 0; i < n; i++) {
-            for(int j = i + 1; j < n; j++) {
-                if(nums[j] > nums[i]) {
-                    dp[j] = max(dp[j], dp[i]+1);
-                }
-            }
-        }
+//         for(int i = 0; i < n; i++) {
+//             for(int j = i + 1; j < n; j++) {
+//                 if(nums[j] > nums[i]) {
+//                     dp[j] = max(dp[j], dp[i]+1);
+//                 }
+//             }
+//         }
         
-        for(int x : dp) {
-            ans = max(ans, x);
-        }
-        return ans;
+//         for(int x : dp) {
+//             ans = max(ans, x);
+//         }
+//         return ans;
         
-    }
-};
+//     }
+// };
 
 
 
@@ -50,22 +50,22 @@ public:
 
 // nlogn solution:
 
-// class Solution {
-// public:
-//     int lengthOfLIS(vector<int>& nums) {
+class Solution {
+public:
+    int lengthOfLIS(vector<int>& nums) {
         
-//         vector<int> sub;
+        vector<int> sub;
         
-//         int n = nums.size();
+        int n = nums.size();
         
-//         for(int i = 0; i < n; i++) {
-//             auto it = lower_bound(sub.begin(), sub.end(), nums[i]);
-//             if(it != sub.end()) {
-//                 *it = nums[i];
-//             } else {
-//                 sub.push_back(nums[i]);
-//             }
-//         }
-//         return sub.size();
-//     }
-// };
+        for(int i = 0; i < n; i++) {
+            auto it = lower_bound(sub.begin(), sub.end(), nums[i]);
+            if(it != sub.end()) {
+                *it = nums[i];
+            } else {
+                sub.push_back(nums[i]);
+            }
+        }
+        return sub.size();
+    }
+};
