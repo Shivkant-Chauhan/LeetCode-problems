@@ -21,31 +21,66 @@
  */
 class Solution {
 public:
-    TreeNode* helper(vector<int>& nums, int start, int end){
-        if(start > end){
-            return NULL;
+//     TreeNode* helper(vector<int>& nums, int start, int end){
+//         if(start > end){
+//             return NULL;
+//         }
+//         if(start == end){
+//             TreeNode* root = new TreeNode(nums[start]);
+//             return root;
+//         }
+        
+//         int mid = (start+end)/2;
+//         TreeNode* root = new TreeNode(nums[mid]);
+//         root->left = helper(nums, start, mid-1);
+//         root->right= helper(nums, mid+1, end);
+        
+//         return root;
+//     }
+    TreeNode* helper(ListNode* head, ListNode* tail){
+        if(!head)   return NULL;
+        if(head == tail){
+            TreeNode* root = new TreeNode(head->val);
+            return root;
         }
-        if(start == end){
-            TreeNode* root = new TreeNode(nums[start]);
+        if(head->next == tail){
+            TreeNode* root = new TreeNode(tail->val);
+            root->left = new TreeNode(head->val);
+            
             return root;
         }
         
-        int mid = (start+end)/2;
-        TreeNode* root = new TreeNode(nums[mid]);
-        root->left = helper(nums, start, mid-1);
-        root->right= helper(nums, mid+1, end);
+        ListNode *slow = head, *fast = head, *prev = NULL;
+        while(fast!=tail && fast->next!=tail){
+            prev = slow;
+            slow = slow->next;
+            fast = fast->next->next;
+        }
+        
+        TreeNode* root = new TreeNode(slow->val);
+        root->left = helper(head, prev);
+        root->right= helper(slow->next, tail);
         
         return root;
+        
     }
     
     TreeNode* sortedListToBST(ListNode* head) {
-        vector<int> nums;
-        ListNode* temp = head;
-        while(temp != NULL){
-            nums.push_back(temp->val);
-            temp = temp->next;
+//         vector<int> nums;
+//         ListNode* temp = head;
+//         while(temp != NULL){
+//             nums.push_back(temp->val);
+//             temp = temp->next;
+//         }
+        
+//         return helper(nums, 0, nums.size()-1);
+        if(!head)   return NULL;
+        
+        ListNode* tail = head;
+        while(tail->next != NULL){
+            tail = tail->next;
         }
         
-        return helper(nums, 0, nums.size()-1);
+        return helper(head, tail);
     }
 };
