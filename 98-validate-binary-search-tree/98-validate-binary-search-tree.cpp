@@ -14,7 +14,7 @@ public:
     bool helper(TreeNode* root, double mini, double maxi){
         if(!root)   return true;
         
-        if(!(root->val>mini && root->val<maxi)) return false;
+        if(root->val<=mini || root->val>=maxi) return false;
         bool p1 = helper(root->left, mini, (double)root->val);
         bool p2 = helper(root->right, (double)root->val, maxi);
         return (p1&p2);
