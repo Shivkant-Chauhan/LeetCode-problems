@@ -1,7 +1,7 @@
 class Solution {
 public:
     int firstUniqChar(string s) {
-        map<char, int> hsh;
+        unordered_map<char, int> hsh;
         for(int i = 0; i < s.size(); i++){
             hsh[s[i]]++;
         }
